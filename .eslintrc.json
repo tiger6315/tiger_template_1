@@ -1,0 +1,53 @@
+{
+  "parser": "@typescript-eslint/parser", //makes typescript syntax readable for eslint
+  "extends": [
+    "eslint:recommended", //enforces rules from eslint team
+    "plugin:react/recommended", //enforces react rules (no-direct-mutation-state rule etc.)
+    "plugin:react-hooks/recommended", //enforces rules of hooks from react (exhaustive-deps rule etc.)
+    "plugin:jsx-a11y/recommended", //evaluation of the JSX to spot accessibility issues
+    "plugin:@typescript-eslint/recommended", // enforces typescript rules
+    "plugin:import/recommended", //enforces correct file paths and import names (no-unresolved rule etc.)
+    "plugin:import/typescript", //enforces correct typescript file paths and import names
+    "prettier" //turns off rules that will be enforced by prettier to avoid duplication
+  ],
+  "env": {
+    "es6": true,
+    "browser": true,
+    "node": true
+  },
+  //settings that will be used by all the plugins if not specified
+  "settings": {
+    "react": {
+      "version": "detect" // automatically picks the react version we have installed
+    },
+    //need ts import resolver for plugin:import/typescript rules to work
+    "import/parsers": { "@typescript-eslint/parser": [".ts", ".tsx"] },
+    "import/resolver": {
+      "typescript": {
+        "alwaysTryTypes": true
+      }
+    }
+  },
+  "rules": {
+    "react/prop-types": "off",
+    "react/display-name": "off",
+    "react-hooks/exhaustive-deps": "off",
+    "no-useless-escape": "off",
+    "react/no-unescaped-entities": "off",
+    "react/react-in-jsx-scope": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/anchor-is-valid": [
+      "off",
+      {
+        "components": ["Link"]
+      }
+    ],
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/explicit-member-accessibility": "off",
+    "@typescript-eslint/no-empty-function": "off",
+    "@typescript-eslint/indent": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-var-requires": "off",
+    "import/no-named-as-default": "off"
+  }
+}
